@@ -126,22 +126,6 @@ export class Visual implements IVisual {
                     return yScale(max);
                 }
             })
-            .attr("x", d => xScale(d.category));
-
-        // 更新された際の再描写
-        bars.enter()
-            .append('rect')
-            .classed('bar', true)
-            .attr("width", xScale.bandwidth())
-            .attr("height", d => yScale(Math.abs(d.value)))
-            .attr("y", d => {
-                if (d.value > 0) {
-                    return yScale(max) - yScale(Math.abs(d.value));
-                }
-                else {
-                    return yScale(max);
-                }
-            })
             .attr("x", d => xScale(d.category))
             .attr("fill", d => {
                 if (d.value > 0) {
